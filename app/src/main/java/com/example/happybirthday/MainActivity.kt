@@ -29,6 +29,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,18 +56,21 @@ fun GreetingText(message:String,
     Column(
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
+            .fillMaxSize()
+            .padding(8.dp)
     ){
         Text(
             text = message,
             fontSize = 100.sp,
-            lineHeight = 116.sp
+            lineHeight = 116.sp,
+            textAlign = TextAlign.Center
         )
         Text(
             text = from,
             fontSize = 36.sp,
             modifier = Modifier
                 .padding(16.dp)
-                .align(alignment = Alignment.End)
+                .align(alignment = Alignment.CenterHorizontally)
         )
     }
 }
@@ -100,7 +104,8 @@ fun GreetingImage(message:String,from: String,modifier: Modifier=Modifier){
 fun BirthDayCardPreview() {
     HappyBirthDayTheme {
         GreetingImage(
-            message = "Happy Birthday Sam!" ,
-            from = "From Taro")
+            message = stringResource(R.string.happy_brithday_text) ,
+            from = stringResource(R.string.signature_text)
+        )
     }
 }
